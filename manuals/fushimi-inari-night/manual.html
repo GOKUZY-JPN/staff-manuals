@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伏見稲荷 ナイトツアー マニュアル | GOKU TRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --vermillion: #C0392B;
+      --deep-red: #8B0000;
+      --gold: #B8860B;
+      --ink: #1a1208;
+      --paper: #FAF6F0;
+      --paper-dark: #F0E8DC;
+      --sidebar-w: 260px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Noto Serif JP', serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== サイドバー ===== */
+    #sidebar {
+      width: var(--sidebar-w);
+      min-height: 100vh;
+      background: #1a1208;
+      position: fixed;
+      top: 0; left: 0;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 32px 24px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--vermillion); }
+
+    .sidebar-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-meta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--vermillion);
+      text-transform: uppercase;
+    }
+
+    .sidebar-nav {
+      padding: 20px 0;
+      flex: 1;
+    }
+
+    .nav-section {
+      padding: 8px 24px 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    .nav-item {
+      display: block;
+      padding: 9px 24px 9px 32px;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-left: 2px solid transparent;
+      line-height: 1.4;
+    }
+
+    .nav-item:hover {
+      color: white;
+      border-left-color: var(--vermillion);
+      background: rgba(192,57,43,0.08);
+      padding-left: 28px;
+    }
+
+    .nav-item.active {
+      color: white;
+      border-left-color: var(--vermillion);
+      background: rgba(192,57,43,0.12);
+    }
+
+    /* ===== メインコンテンツ ===== */
+    #main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      min-height: 100vh;
+    }
+
+    #top-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(250,246,240,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(192,57,43,0.1);
+      padding: 12px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+    }
+
+    .breadcrumb {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: #999;
+    }
+
+    .breadcrumb span { color: var(--vermillion); }
+
+    .print-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: #999;
+      background: none;
+      border: 1px solid rgba(192,57,43,0.2);
+      padding: 5px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .print-btn:hover { color: var(--vermillion); border-color: var(--vermillion); }
+
+    /* ===== マニュアル本文 ===== */
+    #content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 48px 120px;
+    }
+
+    /* Markdown スタイル上書き */
+    #content h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--vermillion);
+    }
+
+    #content h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 56px;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      background: rgba(192,57,43,0.05);
+      border-left: 3px solid var(--vermillion);
+    }
+
+    #content h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--deep-red);
+      margin-top: 36px;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    #content h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 24px;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    #content p {
+      font-size: 14px;
+      line-height: 2.0;
+      color: #3a2f20;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    #content ul, #content ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    #content li {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #3a2f20;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+
+    #content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 13px;
+    }
+
+    #content th {
+      background: #1a1208;
+      color: rgba(255,255,255,0.85);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    #content td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(192,57,43,0.1);
+      color: #3a2f20;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    #content tr:nth-child(even) td { background: rgba(192,57,43,0.03); }
+
+    #content blockquote {
+      border-left: 3px solid var(--gold);
+      background: rgba(184,134,11,0.05);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    #content blockquote p {
+      color: #5a4a2a;
+      font-style: italic;
+      margin: 0;
+    }
+
+    #content code {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      background: rgba(192,57,43,0.07);
+      color: var(--deep-red);
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    #content hr {
+      border: none;
+      border-top: 1px solid rgba(192,57,43,0.15);
+      margin: 40px 0;
+    }
+
+    /* 画像プレースホルダー */
+    #content img {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+      height: 220px;
+      object-fit: cover;
+      margin: 20px 0;
+      border: 1px solid rgba(192,57,43,0.15);
+      background: linear-gradient(135deg, #F0E8DC 0%, #E8DDD0 100%);
+    }
+
+    /* 画像がなければプレースホルダー表示 */
+    #content img::after {
+      content: attr(alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #bbb;
+      letter-spacing: 0.2em;
+    }
+
+    #loading {
+      padding: 80px 48px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: #bbb;
+    }
+
+    /* モバイル */
+    @media (max-width: 768px) {
+      #sidebar { display: none; }
+      #main { margin-left: 0; }
+      #content { padding: 32px 20px 80px; }
+      #top-bar { padding: 12px 20px; }
+    }
+
+    @media print {
+      #sidebar, #top-bar { display: none; }
+      #main { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- サイドバー -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <a class="back-link" href="../../index.html">← マニュアル一覧</a>
+    <div class="sidebar-title">伏見稲荷大社<br>ナイトツアー</div>
+    <div class="sidebar-meta">2h Private Tour · Kyoto</div>
+  </div>
+  <div class="sidebar-nav" id="nav-links">
+    <!-- JSで自動生成 -->
+  </div>
+</nav>
+
+<!-- メイン -->
+<div id="main">
+  <div id="top-bar">
+    <div class="breadcrumb">GOKU TRIP &nbsp;/&nbsp; <span>伏見稲荷 ナイトツアー マニュアル</span></div>
+    <button class="print-btn" onclick="window.print()">印刷</button>
+  </div>
+
+  <div id="content">
+    <div id="loading">マニュアルを読み込み中...</div>
+  </div>
+</div>
+
+<script>
+  // Markdownを読み込んでレンダリング
+  fetch('./index.md')
+    .then(r => {
+      if (!r.ok) throw new Error('File not found');
+      return r.text();
+    })
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+      buildNav();
+    })
+    .catch(err => {
+      document.getElementById('content').innerHTML = `
+        <p style="color:#999;font-family:Montserrat,sans-serif;font-size:12px;">
+          マニュアルファイルの読み込みに失敗しました。<br>index.md が同じフォルダにあるか確認してください。
+        </p>`;
+    });
+
+  // 見出しからサイドバーナV生成
+  function buildNav() {
+    const headings = document.querySelectorAll('#content h2, #content h3');
+    const nav = document.getElementById('nav-links');
+    let currentSection = null;
+
+    headings.forEach((h, i) => {
+      const id = 'section-' + i;
+      h.id = id;
+
+      if (h.tagName === 'H2') {
+        const label = document.createElement('div');
+        label.className = 'nav-section';
+        label.textContent = '─';
+        nav.appendChild(label);
+
+        const link = document.createElement('a');
+        link.className = 'nav-item';
+        link.textContent = h.textContent.replace(/^[0-9️⃣]+\s*/, '').replace(/[|｜].*/, '').trim();
+        link.onclick = () => scrollTo(id, link);
+        nav.appendChild(link);
+        currentSection = link;
+      }
+    });
+
+    // スクロール監視
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
+          const id = e.target.id;
+          document.querySelectorAll('.nav-item').forEach(l => {
+            if (l._targetId === id) l.classList.add('active');
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    document.querySelectorAll('#content h2').forEach((h, i) => {
+      const link = nav.querySelectorAll('.nav-item')[i];
+      if (link) {
+        link._targetId = h.id;
+        observer.observe(h);
+      }
+    });
+  }
+
+  function scrollTo(id, link) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  }
+</script>
+</body>
+</html>
