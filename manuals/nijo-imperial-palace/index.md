@@ -148,6 +148,26 @@
 
 > 💬 *"This building has burned down and been rebuilt over a dozen times. The one you see today dates from 1855 — but the design follows a tradition going back over a thousand years."*
 
+**なぜ日本の木造建築はこんなに燃えやすいのか？（ゲストへの解説用）**
+
+| 要因 | 説明 |
+|------|------|
+| **木材中心の構造** | 柱・梁・壁・屋根がすべて木。日本の乾燥した気候で可燃性が高い |
+| **床下の空洞構造** | 湿気対策として床下に空間を設けるため、火が入ると煙・熱が急速に拡散 |
+| **茅葺・板葺の屋根** | 火の粉を受けやすい。瓦の普及は遅く、庶民の長屋は板葺が多かった |
+| **密集した都市構造** | 江戸の長屋は密集しており、火の粉が隣家に飛びやすかった |
+| **冬の強風と乾燥** | 季節風が火を運び、囲炉裏・火鉢・提灯の明火が至る所にあった |
+
+**なぜ石造りにしなかったのか？**
+- 日本は**地震大国**→石造りは地震で崩壊しやすく危険
+- **木材が豊富**で加工が容易。再建も速い
+- 木の通気性が**多湿な日本の気候に適合**していた
+
+**土蔵（どぞう）はなぜ普及しなかったか？**
+土壁・漆喰仕上げで耐火性は高いが、通気性が悪くカビ・腐食しやすい。夏暑く冬寒く暗い。商家の**財産保管専用**として使われたが、住居には不向きだった。
+
+> 💬 *"Japan had all the same fire hazards as medieval Europe — wooden cities, open flames, strong winds. But instead of switching to stone, they perfected the art of rebuilding. The Japanese relationship with fire is a story of resilience, not failure."*
+
 **御所の台所・生活設備について：**
 
 - かつては清涼殿西側に「御台所（おだいどころ）」が存在し、侍女が調理。「清所門」の名の由来はここから
@@ -211,6 +231,31 @@
 - 京都御所の**南側正門・最高格式の門**
 - 通常は閉ざされており、開かれるのは即位の大礼・天皇の行幸・国賓訪問のみ
 - イギリス女王エリザベス2世が国賓来日の際もこの門を通って入場
+
+**建礼門の彫刻（蟇股・かえるまた）：**
+
+建礼門の蟇股（梁を支える束状の構造部）には、中国の神仙伝説をテーマにした精緻な彫刻が施されている。
+
+| 位置 | 彫刻の内容 |
+|------|-----------|
+| 外側・中央 | **浪に龍**（力強さと守護の象徴） |
+| 外側・東西 | **菊水**（長寿・清らかさの象徴） |
+| 外側・東側 | **巨霊人（きょれいじん）**：大力神通を持ち山を劈く力の仙人。**白虎**を伴う |
+| 外側・腰長押 | **唐桐**（格式の象徴） |
+| 内側・中央 | **菊逆輪**（下に雲模様） |
+| 内側・東側 | **費長房（ひちょうぼう）**：壺の中で仙人に歓待される伝説の仙人 |
+| 内側・西側 | **廬敖（ろごう）／黄安（こうあん）**：亀に乗る長寿の仙人（3,000年に一度首を出す神亀に乗る） |
+| 切妻・東西南北 | **浪に飛龍**（長寿と仙境を表す） |
+
+**主な仙人の解説：**
+- **黄初平（こうしょへい）：** 石を羊に変える仙人。長寿・変化の象徴
+- **巨霊人：** 大力で山を劈く神通力を持ち、白虎を愛した。門の守護者として配置
+- **費長房：** 壺の中に別世界（仙境）がある伝説の人物。「壺中の天」の語源
+- **黄安（亀乗り仙人）：** 3,000年に一度首を出す亀に5回乗ったとされ、年齢15,000歳とも。長寿の極致
+
+慶長18年（1613年）頃の造営で、安政度以降の再建時に詳細化。全体に金箔・彩色が施された重要文化財級の細工。
+
+> 💬 *"Every figure carved into this gate comes from Chinese mythology — immortal sages who could move mountains, transform stones into sheep, or live inside a jar. The Emperor's gate was guarded not by soldiers, but by legends."*
 
 #### 【紫宸殿（ししんでん）】
 
@@ -450,9 +495,45 @@
 
 > 💬 *"In Europe, royal guards were often knights or Swiss mercenaries — politically powerful figures. In Japan, the Shogun's guards were strictly defined by bureaucratic rank. Very different ideas about loyalty."*
 
+### 🚪 京都御苑の「門」のエピソード
+
+京都御苑には9つの衛門（えいもん）があり、それぞれ歴史的なエピソードを持つ。
+
+**蛤御門（はまぐりごもん）：**
+- 正式名：新在家御門。高麗門型の筋鉄門
+- 普段は固く閉ざされていたが、天明の大火（1788年）や宝永の大火（1708年）の際に開門された
+- 「火事で焼けると口を開く蛤に似ている」ことから「蛤御門」の名が定着
+- **元治元年（1864年）、禁門の変（蛤御門の変）：** 長州藩軍が会津・薩摩連合軍と激突。この戦闘で起きた大火「どんどん焼け」で京都市街が大規模焼失。門には**今も弾痕**が残っており、触れることもできる（偽物説もあるが幕末動乱の象徴）
+
+**その他の主要な門：**
+
+| 門名 | 特徴 |
+|------|------|
+| **中立売御門** | 南側の玄関口。北に休憩所・売店（檜垣茶寮）あり |
+| **清所門** | 西側の通用門（勝手口）。皇子女参内用。現在は見学者の入口 |
+| **堺町御門** | 蛤御門近く。禁門の変で長州軍が最初に到着した地点・大火の起点 |
+| **建礼門** | 南正門。最高格式。皇族・元首級のみ通行可 |
+
+> 💬 *"The gate we just walked through — the Kenreimon — was opened for Queen Elizabeth. The Hamaguri Gate a few hundred meters away still has bullet holes from the last civil war before the modern era. Two very different kinds of history, side by side."*
+
+### 🚽 なぜ日本のトイレはこんなに綺麗なのか？
+
+西洋のゲストが日本で最も驚くことの一つ。
+
+| 理由 | 説明 |
+|------|------|
+| **神道の清浄意識** | 「穢れを除去する」思想で掃除が心の浄化と同義。靴を脱ぐ文化で室内の清潔を維持 |
+| **おもてなしの精神** | 「次の人を思う」公徳心で汚さず使う文化 |
+| **高頻度清掃** | 駅・施設で1時間ごとの清掃員配置。清掃記録表を公開して責任を明確化 |
+| **技術への投資** | TOTOのウォシュレットなど温水洗浄・自動機能が標準化 |
+| **恥の文化** | 音や臭いを他人に聞かせることを恥とする感覚から「音姫」などの技術革新が生まれた |
+
+> 💬 *"The Japanese obsession with clean toilets actually comes from the same place as everything else we've seen today — the Shinto idea that cleanliness is a form of spiritual purity. The toilet is just the most unexpected place that idea shows up."*
+
 ### 🌸 ゲストとの会話例
 - 今回の旅で最も印象に残った場所は？
 - 自国に似たような宮殿・城はある？
+- 日本で最も驚いたことは何か？
 
 ---
 
