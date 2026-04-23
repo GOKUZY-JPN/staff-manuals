@@ -2,533 +2,155 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>ガイドマニュアル | GOKU TRIP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
-      --vermillion: #C0392B;
-      --deep-red: #8B0000;
-      --gold: #B8860B;
-      --ink: #1a1208;
-      --paper: #FAF6F0;
-      --paper-dark: #F0E8DC;
-      --sidebar-w: 260px;
-      --topbar-h: 52px;
+      --red:#C0392B;--dark:#8B0000;--gold:#9A7B0A;--ink:#1a1208;
+      --bg:#FAF7F3;--border:rgba(192,57,43,0.15);--sidebar-w:270px;--bar-h:56px;
     }
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.8;display:flex;min-height:100vh}
+    #sidebar{width:var(--sidebar-w);min-height:100vh;background:#111;position:fixed;top:0;left:0;display:flex;flex-direction:column;overflow-y:auto;z-index:300;transition:transform .28s ease}
+    .sb-head{padding:28px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .sb-back{display:inline-block;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:16px;text-transform:uppercase}
+    .sb-title{font-family:'Noto Serif JP',serif;font-size:15px;color:#fff;line-height:1.5;margin-bottom:4px}
+    .sb-sub{font-size:10px;letter-spacing:.2em;color:var(--red);text-transform:uppercase}
+    .sb-nav{padding:12px 0;flex:1}
+    .nav-item{display:block;padding:13px 20px 13px 28px;font-size:14px;color:rgba(255,255,255,.5);cursor:pointer;border-left:3px solid transparent;line-height:1.4;transition:all .15s}
+    .nav-item.active{color:#fff;border-left-color:var(--red);background:rgba(192,57,43,.1)}
+    #overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200}
+    #overlay.show{display:block}
+    #main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+    #topbar{position:sticky;top:0;height:var(--bar-h);background:rgba(250,247,243,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:100}
+    #menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+    #menu-btn span{display:block;height:2px;width:100%;background:var(--red);border-radius:2px}
+    .tb-title{flex:1;font-size:12px;letter-spacing:.1em;color:#999;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .tb-title b{color:var(--red);font-weight:400}
+    .tb-btn{font-size:11px;letter-spacing:.1em;color:#888;background:none;border:1px solid var(--border);padding:7px 12px;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;flex-shrink:0}
+    #content{max-width:820px;margin:0 auto;padding:36px 32px 120px}
+    #content h1{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:600;line-height:1.5;padding-bottom:14px;border-bottom:3px solid var(--red);margin-bottom:8px}
+    #content h2{font-size:18px;font-weight:700;color:#fff;background:var(--dark);padding:12px 16px;margin-top:52px;margin-bottom:20px;border-radius:4px}
+    #content h3{font-size:17px;font-weight:700;color:var(--dark);margin-top:36px;margin-bottom:12px;padding-left:10px;border-left:4px solid var(--red)}
+    #content h4{font-size:15px;font-weight:700;color:var(--gold);margin-top:24px;margin-bottom:8px}
+    #content p{font-size:17px;line-height:2.0;color:#2a1e10;margin-bottom:16px}
+    #content ul,#content ol{padding-left:20px;margin-bottom:16px}
+    #content li{font-size:17px;line-height:2.0;color:#2a1e10;margin-bottom:8px}
+    #content blockquote{border-left:4px solid var(--gold);background:#FFF9EC;padding:14px 16px;margin:20px 0;border-radius:0 6px 6px 0}
+    #content blockquote p{font-size:15px;color:#5a4010;font-style:italic;margin:0;line-height:1.8}
+    #content hr{border:none;border-top:1px solid var(--border);margin:36px 0}
+    #content code{font-family:monospace;font-size:13px;background:rgba(192,57,43,.07);color:var(--dark);padding:2px 6px;border-radius:3px}
+    #content img{display:block;width:100%;max-width:600px;height:180px;object-fit:cover;margin:16px 0;border:1px solid var(--border);background:linear-gradient(135deg,#F0E8DC,#E0D5C5);border-radius:4px}
+    #content table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:15px;border-radius:6px;overflow:hidden}
+    #content th{background:#1a1208;color:rgba(255,255,255,.9);font-size:12px;font-weight:700;letter-spacing:.08em;padding:11px 14px;text-align:left}
+    #content td{padding:11px 14px;border-bottom:1px solid var(--border);color:#2a1e10;line-height:1.7;vertical-align:top}
+    #content tr:last-child td{border-bottom:none}
+    #content tr:nth-child(even) td{background:rgba(192,57,43,.03)}
+    #loading{padding:80px 24px;text-align:center;font-size:13px;letter-spacing:.2em;color:#bbb}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @media(max-width:768px){
+      #sidebar{transform:translateX(-100%)}
+      #sidebar.open{transform:translateX(0)}
+      #main{margin-left:0}
+      #menu-btn{display:flex}
+      #content{padding:20px 14px 100px}
+      #content h1{font-size:22px}
+      #content h2{font-size:18px;padding:11px 14px;margin-top:44px}
+      #content h3{font-size:17px}
+      #content h4{font-size:16px}
+      #content p,#content li{font-size:18px;line-height:2.1}
+      #content blockquote p{font-size:16px}
 
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: 'Noto Serif JP', serif;
-      display: flex;
-      min-height: 100vh;
+      /* テーブル→カード形式 */
+      #content table,#content thead,#content tbody,#content th,#content td,#content tr{display:block}
+      #content thead{display:none}
+      #content tr{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+      #content td{padding:12px 14px;border-bottom:1px solid rgba(192,57,43,.08);font-size:16px;line-height:1.9}
+      #content td:last-child{border-bottom:none}
+      #content td[data-label]::before{content:attr(data-label);display:block;font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--red);text-transform:uppercase;margin-bottom:3px;opacity:.8}
+      #content tr:nth-child(even) td{background:transparent}
     }
-
-    /* ===== サイドバー（PC） ===== */
-    #sidebar {
-      width: var(--sidebar-w);
-      min-height: 100vh;
-      background: #1a1208;
-      position: fixed;
-      top: 0; left: 0;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      z-index: 200;
-      transition: transform 0.3s ease;
-    }
-
-    .sidebar-header {
-      padding: 32px 24px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.35);
-      text-decoration: none;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--vermillion); }
-
-    .sidebar-title {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: white;
-      line-height: 1.5;
-      margin-bottom: 6px;
-    }
-
-    .sidebar-meta {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      color: var(--vermillion);
-      text-transform: uppercase;
-    }
-
-    .sidebar-nav { padding: 20px 0; flex: 1; }
-
-    .nav-section {
-      padding: 8px 24px 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 8px;
-      letter-spacing: 0.35em;
-      color: rgba(255,255,255,0.2);
-    }
-
-    .nav-item {
-      display: block;
-      padding: 11px 24px 11px 32px;
-      font-size: 13px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.15s;
-      border-left: 2px solid transparent;
-      line-height: 1.4;
-    }
-    .nav-item:hover, .nav-item.active {
-      color: white;
-      border-left-color: var(--vermillion);
-      background: rgba(192,57,43,0.12);
-    }
-
-    /* ===== オーバーレイ（モバイル用） ===== */
-    #overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 150;
-    }
-    #overlay.show { display: block; }
-
-    /* ===== メインコンテンツ ===== */
-    #main {
-      margin-left: var(--sidebar-w);
-      flex: 1;
-      min-height: 100vh;
-    }
-
-    /* ===== トップバー ===== */
-    #top-bar {
-      position: sticky;
-      top: 0;
-      height: var(--topbar-h);
-      background: rgba(250,246,240,0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(192,57,43,0.12);
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 100;
-      gap: 12px;
-    }
-
-    /* ハンバーガーボタン（モバイルのみ表示） */
-    #menu-btn {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      flex-shrink: 0;
-    }
-    #menu-btn span {
-      display: block;
-      height: 2px;
-      background: var(--vermillion);
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-
-    .breadcrumb {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: #999;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex: 1;
-    }
-    .breadcrumb span { color: var(--vermillion); }
-
-    .top-actions { display: flex; gap: 8px; flex-shrink: 0; }
-
-    .action-btn {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      letter-spacing: 0.15em;
-      color: #999;
-      background: none;
-      border: 1px solid rgba(192,57,43,0.2);
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-    }
-    .action-btn:hover { color: var(--vermillion); border-color: var(--vermillion); }
-
-    /* ===== マニュアル本文 ===== */
-    #content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 40px 120px;
-    }
-
-    #content h1 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.4;
-      margin-bottom: 8px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--vermillion);
-    }
-
-    #content h2 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-top: 48px;
-      margin-bottom: 16px;
-      padding: 10px 14px;
-      background: rgba(192,57,43,0.05);
-      border-left: 3px solid var(--vermillion);
-    }
-
-    #content h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--deep-red);
-      margin-top: 32px;
-      margin-bottom: 10px;
-    }
-
-    #content h4 {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gold);
-      margin-top: 20px;
-      margin-bottom: 8px;
-    }
-
-    #content p {
-      font-size: 15px;
-      line-height: 1.9;
-      color: #3a2f20;
-      margin-bottom: 14px;
-      font-weight: 300;
-    }
-
-    #content ul, #content ol {
-      padding-left: 18px;
-      margin-bottom: 14px;
-    }
-
-    #content li {
-      font-size: 15px;
-      line-height: 1.85;
-      color: #3a2f20;
-      font-weight: 300;
-      margin-bottom: 6px;
-    }
-
-    /* ===== テーブル：横スクロール対応 ===== */
-    #content table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 24px;
-      font-size: 14px;
-    }
-
-    /* テーブルをラップして横スクロール */
-    #content table {
-      display: block;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      white-space: nowrap;
-    }
-
-    #content th {
-      background: #1a1208;
-      color: rgba(255,255,255,0.85);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      padding: 10px 14px;
-      text-align: left;
-    }
-
-    #content td {
-      padding: 10px 14px;
-      border-bottom: 1px solid rgba(192,57,43,0.1);
-      color: #3a2f20;
-      font-weight: 300;
-      line-height: 1.6;
-      white-space: normal; /* セル内は折り返す */
-      min-width: 80px;
-    }
-
-    #content tr:nth-child(even) td { background: rgba(192,57,43,0.03); }
-
-    #content blockquote {
-      border-left: 3px solid var(--gold);
-      background: rgba(184,134,11,0.05);
-      padding: 14px 16px;
-      margin: 16px 0;
-      border-radius: 0 4px 4px 0;
-    }
-
-    #content blockquote p {
-      color: #5a4a2a;
-      font-style: italic;
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    #content code {
-      font-family: 'Courier New', monospace;
-      font-size: 12px;
-      background: rgba(192,57,43,0.07);
-      color: var(--deep-red);
-      padding: 2px 6px;
-      border-radius: 2px;
-    }
-
-    #content hr {
-      border: none;
-      border-top: 1px solid rgba(192,57,43,0.15);
-      margin: 36px 0;
-    }
-
-    #content img {
-      display: block;
-      width: 100%;
-      max-width: 600px;
-      height: 200px;
-      object-fit: cover;
-      margin: 16px 0;
-      border: 1px solid rgba(192,57,43,0.15);
-      background: linear-gradient(135deg, #F0E8DC 0%, #E8DDD0 100%);
-    }
-
-    #loading {
-      padding: 80px 24px;
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      color: #bbb;
-    }
-
-    /* ===== スマホ対応 ===== */
-    @media (max-width: 768px) {
-      /* サイドバーはデフォルト非表示、開いた時だけ表示 */
-      #sidebar {
-        transform: translateX(-100%);
-      }
-      #sidebar.open {
-        transform: translateX(0);
-      }
-
-      /* メインはフル幅 */
-      #main { margin-left: 0; }
-
-      /* ハンバーガーボタン表示 */
-      #menu-btn { display: flex; }
-
-      /* コンテンツのパディング調整 */
-      #content {
-        padding: 24px 16px 100px;
-      }
-
-      #top-bar { padding: 0 14px; }
-
-      /* 見出しサイズ調整 */
-      #content h1 { font-size: 20px; }
-      #content h2 { font-size: 16px; padding: 9px 12px; }
-      #content h3 { font-size: 15px; }
-
-      /* テキストサイズはそのまま（15pxは読みやすい） */
-      #content p, #content li { font-size: 15px; }
-
-      /* テーブルのフォント少し小さく */
-      #content table { font-size: 13px; }
-      #content th, #content td { padding: 8px 10px; }
-
-      /* blockquoteのフォント */
-      #content blockquote p { font-size: 13px; }
-
-      /* 画像高さ調整 */
-      #content img { height: 160px; }
-    }
-
-    @media print {
-      #sidebar, #top-bar, #menu-btn, #overlay { display: none !important; }
-      #main { margin-left: 0; }
-      #content { padding: 20px; }
-    }
+    @media print{#sidebar,#topbar,#overlay{display:none!important}#main{margin-left:0}#content{padding:20px}}
   </style>
 </head>
 <body>
-
-<!-- オーバーレイ（モバイルでサイドバーを閉じるため） -->
 <div id="overlay" onclick="closeSidebar()"></div>
-
-<!-- サイドバー -->
 <nav id="sidebar">
-  <div class="sidebar-header">
-    <a class="back-link" href="../../index.html">← マニュアル一覧</a>
-    <div class="sidebar-title" id="sidebar-title">ガイドマニュアル</div>
-    <div class="sidebar-meta" id="sidebar-meta">GOKU TRIP</div>
+  <div class="sb-head">
+    <a class="sb-back" href="../../index.html">← 一覧に戻る</a>
+    <div class="sb-title" id="sb-title">ガイドマニュアル</div>
+    <div class="sb-sub">GOKU TRIP Staff Portal</div>
   </div>
-  <div class="sidebar-nav" id="nav-links"></div>
+  <div class="sb-nav" id="nav-links"></div>
 </nav>
-
-<!-- メイン -->
 <div id="main">
-  <div id="top-bar">
-    <!-- ハンバーガーボタン（モバイルのみ） -->
-    <button id="menu-btn" onclick="openSidebar()" aria-label="目次を開く">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="breadcrumb">GOKU TRIP &nbsp;/&nbsp; <span id="breadcrumb-title">マニュアル</span></div>
-
-    <div class="top-actions">
-      <a class="action-btn" href="../../index.html">← 一覧</a>
-      <button class="action-btn" onclick="window.print()">印刷</button>
-    </div>
+  <div id="topbar">
+    <button id="menu-btn" onclick="openSidebar()"><span></span><span></span><span></span></button>
+    <div class="tb-title"><b id="tb-title">マニュアル</b></div>
+    <a class="tb-btn" href="../../index.html">← 一覧</a>
+    <button class="tb-btn" onclick="window.print()">印刷</button>
   </div>
-
-  <div id="content">
-    <div id="loading">マニュアルを読み込み中...</div>
-  </div>
+  <div id="content"><div id="loading">読み込み中...</div></div>
 </div>
-
 <script>
-  // ===== サイドバー開閉 =====
-  function openSidebar() {
-    document.getElementById('sidebar').classList.add('open');
-    document.getElementById('overlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('show');
-    document.body.style.overflow = '';
-  }
+  function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');document.body.style.overflow='hidden'}
+  function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');document.body.style.overflow=''}
 
-  // ===== Markdownを読み込んでレンダリング =====
   fetch('./index.md')
-    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
-    .then(md => {
-      document.getElementById('content').innerHTML = marked.parse(md);
-      buildNav();
-      setTitles();
+    .then(r=>{if(!r.ok)throw new Error();return r.text()})
+    .then(md=>{
+      document.getElementById('content').innerHTML=marked.parse(md);
+      setTitle();buildNav();makeCards();
     })
-    .catch(() => {
-      document.getElementById('content').innerHTML =
-        '<p style="color:#999;font-family:Montserrat,sans-serif;font-size:13px;padding:40px 0;">マニュアルファイルの読み込みに失敗しました。<br>index.md が同じフォルダにあるか確認してください。</p>';
-    });
+    .catch(()=>{document.getElementById('content').innerHTML='<p style="padding:40px 0;color:#999;font-size:15px;">マニュアルの読み込みに失敗しました。</p>'});
 
-  // ===== ページタイトルをh1から自動設定 =====
-  function setTitles() {
-    const h1 = document.querySelector('#content h1');
-    if (!h1) return;
-    const raw = h1.textContent.replace(/[🏯🦊🦌]/g, '').trim();
-    const short = raw.split('富裕層')[0].trim().replace(/&amp;/g, '&');
-    document.getElementById('sidebar-title').textContent = short;
-    document.getElementById('breadcrumb-title').textContent = short;
-    document.title = short + ' | GOKU TRIP';
+  function setTitle(){
+    const h=document.querySelector('#content h1');
+    if(!h)return;
+    const t=h.textContent.replace(/[\u{1F000}-\u{1FFFF}]/gu,'').trim().slice(0,20);
+    document.getElementById('sb-title').textContent=t;
+    document.getElementById('tb-title').textContent=t;
+    document.title=t+' | GOKU TRIP';
   }
 
-  // ===== 見出しからサイドバー目次を生成 =====
-  function buildNav() {
-    const headings = document.querySelectorAll('#content h2, #content h3');
-    const nav = document.getElementById('nav-links');
-
-    headings.forEach((h, i) => {
-      const id = 'section-' + i;
-      h.id = id;
-
-      if (h.tagName === 'H2') {
-        const sep = document.createElement('div');
-        sep.className = 'nav-section';
-        sep.textContent = '─';
-        nav.appendChild(sep);
-
-        const link = document.createElement('a');
-        link.className = 'nav-item';
-        link.textContent = h.textContent
-          .replace(/^[\d️⃣🏯🦊🦌]+\s*/, '')
-          .replace(/[|｜].*/, '')
-          .replace(/[^\u0000-\u007F\u3000-\u9FFF\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FFF]/g, '')
-          .trim()
-          .slice(0, 24);
-        link.onclick = () => {
-          scrollToSection(id, link);
-          // モバイルではクリック後に自動で閉じる
-          if (window.innerWidth <= 768) closeSidebar();
-        };
-        link._targetId = id;
-        nav.appendChild(link);
-      }
+  function buildNav(){
+    const nav=document.getElementById('nav-links');
+    document.querySelectorAll('#content h2').forEach((h,i)=>{
+      h.id='h'+i;
+      const a=document.createElement('a');
+      a.className='nav-item';
+      a.textContent=h.textContent.replace(/^[\d️⃣🏯🦊🦌\s]+/,'').slice(0,22);
+      a._id='h'+i;
+      a.onclick=()=>{jump('h'+i);if(window.innerWidth<=768)closeSidebar()};
+      nav.appendChild(a);
     });
-
-    // スクロール監視
-    const items = nav.querySelectorAll('.nav-item');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          items.forEach(l => l.classList.remove('active'));
-          items.forEach(l => { if (l._targetId === e.target.id) l.classList.add('active'); });
+    const obs=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+          document.querySelectorAll('.nav-item').forEach(n=>{if(n._id===e.target.id)n.classList.add('active')});
         }
       });
-    }, { rootMargin: '-10% 0px -80% 0px' });
-
-    document.querySelectorAll('#content h2').forEach(h => observer.observe(h));
+    },{rootMargin:'-10% 0px -80% 0px'});
+    document.querySelectorAll('#content h2').forEach(h=>obs.observe(h));
   }
 
-  function scrollToSection(id, link) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const offset = document.getElementById('top-bar').offsetHeight + 12;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-    document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
-    if (link) link.classList.add('active');
+  function jump(id){
+    const el=document.getElementById(id);
+    if(!el)return;
+    const top=el.getBoundingClientRect().top+window.scrollY-document.getElementById('topbar').offsetHeight-10;
+    window.scrollTo({top,behavior:'smooth'});
+  }
+
+  function makeCards(){
+    document.querySelectorAll('#content table').forEach(t=>{
+      const headers=[...t.querySelectorAll('th')].map(th=>th.textContent.trim());
+      t.querySelectorAll('tr').forEach(tr=>{
+        [...tr.querySelectorAll('td')].forEach((td,i)=>{if(headers[i])td.setAttribute('data-label',headers[i])});
+      });
+    });
   }
 </script>
 </body>
